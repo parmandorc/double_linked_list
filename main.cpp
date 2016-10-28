@@ -42,10 +42,10 @@ public:
   item *insert_after(item *prev, int value) {
     item *next = prev->next;
     item *new_item = new item(value);
-    new_item->prev = &head;
-    new_item->next = WHAT; // fill this in
-    prev->next = WHAT; // fill this in
-    next->prev = WHAT; // fill this in
+    new_item->prev = prev;
+    new_item->next = next; // fill this in
+    prev->next = new_item; // fill this in
+    next->prev = new_item; // fill this in
     return new_item;
   }
 
@@ -90,11 +90,9 @@ public:
     auto two = my_list.find(2);
     my_list.remove(two);
     my_list.dump(std::cout);
-    /* Commented until the rest of the methods are fixed
     auto three = my_list.find(3);
     my_list.insert_after(three, 33);
     my_list.dump(std::cout);
-    */
   }
 };
 
