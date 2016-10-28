@@ -52,7 +52,12 @@ public:
 
   item *find(int value) {
      // write a loop here to return the first element with this value
-    return WHAT;
+    item *found = nullptr;
+    for (item *it = head.next; it != &head && !found; it = it->next) {
+      if (it->value == value)
+        found = it;
+    }
+    return found;
   }
 
   item *get_first() {
@@ -82,8 +87,8 @@ public:
     my_list.insert(3);
     my_list.insert(4);
     my_list.dump(std::cout);
-    /* Commented until the rest of the methods are fixed
     auto two = my_list.find(2);
+    /* Commented until the rest of the methods are fixed
     my_list.remove(two);
     my_list.dump(std::cout);
     auto three = my_list.find(3);
