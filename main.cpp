@@ -33,8 +33,9 @@ public:
   item *insert(int value) {
     item *new_item = new item(value);
     new_item->prev = &head;
-    new_item->next = WHAT; // fill this in
-    head.prev = WHAT; // fill this in
+    new_item->next = head.next;
+    if (head.next == head.prev) //only need to change last item when inserting first item
+      head.prev = new_item;
     head.next = new_item;
     return new_item;
   }
@@ -81,17 +82,20 @@ public:
     my_list.insert(3);
     my_list.insert(4);
     my_list.dump(std::cout);
+    /* Commented until the rest of the methods are fixed
     auto two = my_list.find(2);
     my_list.remove(two);
     my_list.dump(std::cout);
     auto three = my_list.find(3);
     my_list.insert_after(three, 33);
     my_list.dump(std::cout);
+    */
   }
 };
 
 int main() {
   double_linked_list my_list;
   my_list.unit_test();
+  while (true); //stop indefinitely in order to be able to read output
 }
 
