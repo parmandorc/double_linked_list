@@ -36,6 +36,7 @@ public:
     new_item->next = WHAT; // fill this in
     head.prev = WHAT; // fill this in
     head.next = new_item;
+    return new_item;
   }
 
   item *insert_after(item *prev, int value) {
@@ -45,10 +46,12 @@ public:
     new_item->next = WHAT; // fill this in
     prev->next = WHAT; // fill this in
     next->prev = WHAT; // fill this in
+    return new_item;
   }
 
   item *find(int value) {
      // write a loop here to return the first element with this value
+    return WHAT;
   }
 
   item *get_first() {
