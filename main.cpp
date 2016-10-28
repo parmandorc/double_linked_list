@@ -34,8 +34,6 @@ public:
     item *new_item = new item(value);
     new_item->prev = &head;
     new_item->next = head.next;
-    if (head.next == head.prev) //only need to change last item when inserting first or second item
-      head.prev->prev = new_item;
     head.next->prev = new_item;
     head.next = new_item;
     return new_item;
