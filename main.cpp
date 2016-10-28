@@ -67,11 +67,12 @@ public:
 
   void remove(item *victim) {
       item *prev = victim->prev;
-      item *next = victim->prev;
-      victim->prev = WHAT; // fill this in
-      victim->next = WHAT; // fill this in
-      prev->next = WHAT; // fill this in
-      next->prev = WHAT; // fill this in
+      item *next = victim->next;
+      victim->prev = nullptr; // fill this in
+      victim->next = nullptr; // fill this in
+      free(victim);
+      prev->next = next; // fill this in
+      next->prev = prev; // fill this in
   }
 
   void dump(std::ostream &os) {
@@ -89,9 +90,9 @@ public:
     my_list.insert(4);
     my_list.dump(std::cout);
     auto two = my_list.find(2);
-    /* Commented until the rest of the methods are fixed
     my_list.remove(two);
     my_list.dump(std::cout);
+    /* Commented until the rest of the methods are fixed
     auto three = my_list.find(3);
     my_list.insert_after(three, 33);
     my_list.dump(std::cout);
